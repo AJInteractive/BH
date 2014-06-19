@@ -41,7 +41,7 @@ tiles.addTo(map);
 $('footer small span').html(tiles.getAttribution());
 
 shapes = L.geoJson(null, {
-    style: defaultStyle 
+    style: defaultStyle
 });
 shapes.addTo(map);
 
@@ -53,8 +53,8 @@ queue()
             callback(null, Module);
         });
     }, 'JS.Command')
-    .defer(d3.csv, 
-        'data/Boko Haram Test data longs latts - Sheet1.csv', 
+    .defer(d3.csv,
+        'data/Boko Haram Test data longs latts - Sheet1.csv',
         function (d) {
             // normalise field names
             return {
@@ -68,8 +68,8 @@ queue()
                 type: 'attack'
             }
         })
-    .defer(d3.csv, 
-        'data/Boko Haram Timeline - Timeline.csv', 
+    .defer(d3.csv,
+        'data/Boko Haram Timeline - Timeline.csv',
         function (d) {
             // normalise field names
             return {
@@ -79,8 +79,8 @@ queue()
                 type: 'event'
             }
         })
-    .defer(d3.csv, 
-        'data/Displacement - Boko Haram - IDP-CLEAN.csv', 
+    .defer(d3.csv,
+        'data/Displacement - Boko Haram - IDP-CLEAN.csv',
         function (d) {
             // normalise field names
             return {
@@ -117,6 +117,7 @@ queue()
 
         process();
     });
+
 
 
 
@@ -231,14 +232,14 @@ function process() {
                 index: i
             })
             .addClass(data[i].type)
-            .html( 
+            .html(
                 (timestamp?'<h6>' + timestamp + '</h6>' : '')
-                + '<time>' 
-                // + data[i].date.toISOString().split('T')[0] 
-                + data[i].date.toString('MMMM dS') 
+                + '<time>'
+                // + data[i].date.toISOString().split('T')[0]
+                + data[i].date.toString('MMMM dS')
                 + '</time>'
-                + '<span>' 
-                + data[i].desc 
+                + '<span>'
+                + data[i].desc
                 + '</span>')
             .css({
                 position: 'absolute',
@@ -255,7 +256,7 @@ function process() {
                 }
             });
 
-        // compute next space    
+        // compute next space
         bottom = top + $event.height();
     }
 
