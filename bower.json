@@ -1,0 +1,21 @@
+{
+  "name": "BH",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "author": "Laurian Gridinoc",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "console-polyfill": "0.1.1",
+    "leaflet-providers": "1.0.5",
+    "queue-async": "*",
+    "dat-gui": "0.5.0"
+  },
+  "devDependencies": {}
+}

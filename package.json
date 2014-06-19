@@ -1,0 +1,30 @@
+{
+  "name": "BH",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laurian Gridinoc",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrent-transform": "^1.0.0",
+    "gulp": "^3.6.2",
+    "gulp-autoprefixer": "^0.0.6",
+    "gulp-cache": "^0.1.1",
+    "gulp-changed": "^0.3.0",
+    "gulp-clean": "^0.2.4",
+    "gulp-filter": "^0.4.1",
+    "gulp-image-resize": "^0.5.0",
+    "gulp-imagemin": "^0.2.0",
+    "gulp-jshint": "^1.5.3",
+    "gulp-load-plugins": "^0.5.0",
+    "gulp-minify-css": "^0.3.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-size": "^0.3.0",
+    "gulp-sprite-generator": "^0.1.5",
+    "gulp-uglify": "^0.2.1",
+    "gulp-useref": "^0.4.2"
+  }
+}
