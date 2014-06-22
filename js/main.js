@@ -5,9 +5,9 @@ var mapSettings = {
     center: [8.733077421211577, 8.580322265624998],
     zoom: 6,
     maxZoom: 8,
-    dragging: false,
+    // dragging: false,
     touchZoom: false,
-    doubleClickZoom: false,
+    // doubleClickZoom: false,
     boxZoom: false,
     zoomControl: false,
     scrollWheelZoom: false,
@@ -206,7 +206,7 @@ function process() {
 
     var start = data[0].date.getTime();
 
-    var bottom = 350; //top padding
+    var bottom = 350; //aka top padding
 
     for (i = 0; i < data.length; i++) {
 
@@ -251,6 +251,15 @@ function process() {
                     console.log($(this).data('lat'), $(this).data('lng'));
                     // map.setView(L.latLng($(this).data('lat'), $(this).data('lng')));
                     // redrawHeatmap(data.slice(0, $(this).data('index')));
+                    var latlng = L.latLng($(this).data('lat'), $(this).data('lng'));
+
+                    if (! $(this).data('marker')) {
+                      var marker = L.marker(latlng, {
+                          // title: data[i].Killed
+                      }).addTo(map);
+                      // marker.bindPopup(data[i].Incident);
+                      $(this).data('marker', marker);
+                    }
                 }
             });
 

@@ -117,6 +117,12 @@ footer {
 }
 
 
+
+/*.leaflet-popup-content-wrapper {
+  border-radius: none;
+}*/
+
+
 .zombie {
     position: absolute;
     right: 0;
