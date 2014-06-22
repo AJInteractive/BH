@@ -55,14 +55,39 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
         <script src="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
         <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.1.2/leaflet-omnivore.min.js'></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 
-		<script>JSCLASS_PATH = 'js/JS.Class-4.0.5/src'</script>
-		<script src="js/JS.Class-4.0.5/src/loader-browser.js"></script>
+		    <script>JSCLASS_PATH = 'js/JS.Class-4.0.5/src'</script>
+		    <script src="js/JS.Class-4.0.5/src/loader-browser.js"></script>
 
         <script src="bower_components/leaflet-providers/leaflet-providers.js"></script>
         <script src="bower_components/leaflet-heat/dist/leaflet-heat.js"></script>
 
         <script src="js/main.js"></script>
+
+        <script id="attack" type="text/html">
+          <div id="<%= id %>" class="attack">
+            <% if (year) { %><h6><%= year %></h6><% } %>
+            <time><%= timestamp %></time>
+            <span><%= description %></span>
+          </div>
+        </script>
+
+        <script id="event" type="text/html">
+          <div id="<%= id %>" class="event">
+            <% if (year) { %><h6><%= year %></h6><% } %>
+            <time><%= timestamp %></time>
+            <span><%= description %></span>
+          </div>
+        </script>
+
+        <script id="displ" type="text/html">
+          <div id="<%= id %>" class="event">
+            <% if (year) { %><h6><%= year %></h6><% } %>
+            <time><%= timestamp %></time>
+            <span><%= description %></span>
+          </div>
+        </script>
 
     </body>
 </html>

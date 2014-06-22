@@ -27,6 +27,9 @@ var defaultStyle = {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////
 // let there be globals
 var map, tiles, shapes, data, Command;
 
@@ -214,8 +217,6 @@ function process() {
             timestamp = data[i].date.getYear() + 1900;
         }
 
-        var $event = $('<div></div>').attr('id', 'A' + i);
-
         // default spacing: 10px per day
         var top = 10*(data[i].date.getTime() - start)/(1000*3600*24);
 
@@ -225,22 +226,19 @@ function process() {
         // compress space
         if (top - bottom > 300) top = bottom + 300;
 
-        $event
+        var $event = $(_.template($('#' + data[i].type).html(),
+              {
+                id: 'A' + 1,
+                year: timestamp,
+                timestamp: data[i].date.toString('MMMM dS'),
+                description: data[i].desc
+              }
+            ))
             .data({
                 lat: data[i].lat,
                 lng: data[i].lng,
                 index: i
             })
-            .addClass(data[i].type)
-            .html(
-                (timestamp?'<h6>' + timestamp + '</h6>' : '')
-                + '<time>'
-                // + data[i].date.toISOString().split('T')[0]
-                + data[i].date.toString('MMMM dS')
-                + '</time>'
-                + '<span>'
-                + data[i].desc
-                + '</span>')
             .css({
                 position: 'absolute',
                 top: top,
