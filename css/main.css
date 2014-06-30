@@ -56,71 +56,62 @@ footer {
     color: white;
 }
 
+
+#timeline > div {
+    width: 100%;
+    clear:both;
+}
+
 #timeline h6 {
     font-size: 32px;
+    margin: 0 .5em;
     background-color: rgba(255, 255, 255, .8);
     border-bottom: 2px solid #af111c;
 }
 
-#timeline div {
-    margin-left: 1em;
-    margin-right: 1em;
-    width: 95%;
-}
-
 #timeline time {
-    display: inline-block;
-    padding-right: 1em;
-    width: 150px;
+  display: block;
+  float: left;
+  width: 15%;
+  color: black;
+  background-color: rgba(255, 255, 255, .8);
+  border-top: 1px solid rgba(255, 255, 255, .8);
+  border-bottom: 1px solid #af111c;
+  padding-left: .5em;
+  padding-right: .5em;
+  text-align: right;
 }
 
-.attack {}
-
-#timeline .attack span {
-    background-color: rgba(175, 17, 28, .8);
-    color: white;
-    border-bottom: 1px solid #af111c;
+#timeline > div > div {
+  float: left;
+  width: 83%;
 }
 
-#timeline .attack time {
-    color: black;
-    background-color: rgba(255, 255, 255, .8);
-    border-bottom: 1px solid #af111c;
+.same-true {
+  color: transparent;
 }
 
-.event {}
-
-#timeline .event span {
-    background-color: rgba(255, 255, 255, .8);
-    color: black;
-    border-bottom: 1px solid #af111c;
+.attack > div > span {
+  background-color: rgba(175, 17, 28, .8);
+  color: white;
 }
 
-#timeline .event time {
-    color: black;
-    background-color: rgba(255, 255, 255, .8);
-    border-bottom: 1px solid #af111c;
+.event > div > span {
+  background-color: rgba(255, 255, 255, .8);
+  color: black;
 }
 
-.displ {}
-
-#timeline .displ span {
-    background-color: rgba(0, 0, 0, .8);
-    color: white;
-    border-bottom: 1px solid #af111c;
-}
-
-#timeline .displ time {
-    color: black;
-    background-color: rgba(255, 255, 255, .8);
-    border-bottom: 1px solid #af111c;
+.displ > div > span {
+  background-color: rgba(255, 255, 255, .8);
+  color: red;
 }
 
 
 
-/*.leaflet-popup-content-wrapper {
-  border-radius: none;
-}*/
+
+
+
+
 
 
 .zombie {

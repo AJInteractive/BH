@@ -69,24 +69,24 @@
         <script id="attack" type="text/html">
           <div id="<%= id %>" class="attack">
             <% if (year) { %><h6><%= year %></h6><% } %>
-            <time><%= timestamp %></time>
-            <span><%= description %></span>
+            <time><span class="same-<%= sameMonth %>"><%= month %></span> <%= day %></time>
+            <div><span><%= description %></span></div>
           </div>
         </script>
 
         <script id="event" type="text/html">
           <div id="<%= id %>" class="event">
             <% if (year) { %><h6><%= year %></h6><% } %>
-            <time><%= timestamp %></time>
-            <span><%= description %></span>
+            <time><span class="same-<%= sameMonth %>"><%= month %></span> <%= day %></time>
+            <div><span><%= description %></span></div>
           </div>
         </script>
 
         <script id="displ" type="text/html">
           <div id="<%= id %>" class="event">
             <% if (year) { %><h6><%= year %></h6><% } %>
-            <time><%= timestamp %></time>
-            <span><%= description %></span>
+            <time><span class="same-<%= sameMonth %>"><%= month %></span> <%= day %></time>
+            <div><span><%= description %></span></div>
           </div>
         </script>
 

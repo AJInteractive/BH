@@ -226,11 +226,14 @@ function process() {
         // compress space
         if (top - bottom > 300) top = bottom + 300;
 
+
         var $event = $(_.template($('#' + data[i].type).html(),
               {
-                id: 'A' + 1,
+                id: 'A' + i,
                 year: timestamp,
-                timestamp: data[i].date.toString('MMMM dS'),
+                month: data[i].date.toString('MMMM'),
+                sameMonth: (i > 0 && data[i].date.toString('MMMM') == data[i-1].date.toString('MMMM')),
+                day: data[i].date.toString('dS').replace('th', '<sup>th</sup>').replace('nd', '<sup>nd</sup>').replace('st', '<sup>st</sup>'),
                 description: data[i].desc
               }
             ))
@@ -242,7 +245,6 @@ function process() {
             .css({
                 position: 'absolute',
                 top: top,
-                // width: '500px',
                 zIndex: i
             })
             .appendTo($timeline)
