@@ -29,13 +29,16 @@ header {
     background-color: rgba(0, 0, 0, .7);
 
     /*height: 100%;*/
-
-    padding: 5em 2em 1em 3em;
+    /*margin-top: -1px;*/
+    padding-top: 1px;
 
     /*border-bottom: 10px solid white;*/
 
     color: white;
 
+    clear: both;
+
+    height: 600px;
 
         -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.5);
 -moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.5);
@@ -43,13 +46,98 @@ box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
 }
 
 header h1 {
-    margin: 0 0 2em 0;
+    /*margin: 0 0 2em 0;*/
+    /*clear: both;*/
 }
 
-p.center {
+header .side {
+  /*width: 360px;*/
+  width: 30%;
+  height: 100%;
+  background-color: rgba(175, 17, 28, .8);
+  float: left;
+  text-align: center;
+  position: relative;
+}
+
+header .rest {
+  width: 70%;
+  /*background-color: rgba(175, 17, 28, .8);*/
+  /*outline: 1px solid yellow;*/
+  float: left;
+  /*clear: both;*/
+  text-align: center;
+}
+
+.rest .text {
+  margin: 5.3em 5em 1em 5em;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+.text p {
+    width: 20em;
+    margin: 2em auto 2em auto;
+}
+
+.text .legend {
+  width: 20em;
+  margin: 2em auto 2em auto;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.legend div {
+  /*display: inline-block;*/
+  margin: 0 auto .5em auto;
+  width: 2em;
+  height: .7em;
+  border: 1px solid white;
+  background-color: red;
+}
+
+.side h2 {
+  font-weight: 300;
+  font-size: 18px;
+  margin: 3em 0 .5em 0;
+}
+
+.side h1 {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 800;
+  font-size: 42px;
+  margin: 0 1em;
+  padding: .5em;
+  line-height: 1.5em;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+.side p {
+  font-weight: 300;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  /*padding: 0 30%;*/
+  bottom: 0;
+}
+
+.side img {
+  position: absolute;
+  /*outline: 1px solid yellow;*/
+  width: 400px;
+  width: 400px;
+  left: 55%;
+  bottom: 0;
+}
+
+
+/*p.center {
     width: 33%;
     margin: 3em auto 0 auto;
 }
+*/
 
 figure {
     position: fixed;
@@ -89,8 +177,8 @@ footer a {
 
 
 #timeline {
-    /*width: 30%;*/
-    width: 360px;
+    width: 30%;
+    /*width: 360px;*/
     /*background-color: rgba(175, 17, 28, .8);*/
     /*background-color: rgba(0, 0, 0, .7);*/
     background-color: rgba(255, 255, 255, .7);
