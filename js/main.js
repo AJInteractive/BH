@@ -75,6 +75,15 @@ var getShapeByName = function (name) {
   };
 }
 
+var setStyleOnEach = function (name, style) {
+  var tokens = name.trim().split(/[,\s]/);
+  for (var i = 0; i < tokens.length; i++) {
+    if (tokens[i] != "") {
+      getShapeByName(tokens[i]).setStyle(style);
+    }
+  }
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 // queue loading of JS.Command, 3 CSV files and shapes
 queue()
@@ -224,11 +233,15 @@ function process() {
                 $(this).addClass('highlight');
 
                 if (direction == 'down') {
-                  getShapeByName($(this).data('from')).setStyle(fromStyle);
-                  getShapeByName($(this).data('to')).setStyle(toStyle);
+                  // getShapeByName($(this).data('from')).setStyle(fromStyle);
+                  setStyleOnEach($(this).data('from'), fromStyle);
+                  // getShapeByName($(this).data('to')).setStyle(toStyle);
+                  setStyleOnEach($(this).data('to'), toStyle);
                 } else {
-                  getShapeByName($(this).data('from')).setStyle(defaultStyle);
-                  getShapeByName($(this).data('to')).setStyle(defaultStyle);
+                  // getShapeByName($(this).data('from')).setStyle(defaultStyle);
+                  // getShapeByName($(this).data('to')).setStyle(defaultStyle);
+                  setStyleOnEach($(this).data('from'), defaultStyle);
+                  setStyleOnEach($(this).data('to'), defaultStyle);
                 }
               }
 
