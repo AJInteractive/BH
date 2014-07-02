@@ -71,7 +71,7 @@ var getShapeByName = function (name) {
   }
 
   return {
-    setStyle: function(){}
+    setStyle: function(){} //dummy
   };
 }
 
@@ -227,8 +227,8 @@ function process() {
                   getShapeByName($(this).data('from')).setStyle(fromStyle);
                   getShapeByName($(this).data('to')).setStyle(toStyle);
                 } else {
-                  // getShapeByName($(this).data('from')).setStyle(defaultStyle);
-                  // getShapeByName($(this).data('to')).setStyle(defaultStyle);
+                  getShapeByName($(this).data('from')).setStyle(defaultStyle);
+                  getShapeByName($(this).data('to')).setStyle(defaultStyle);
                 }
               }
 
@@ -260,7 +260,7 @@ function process() {
                     }
                 }
             }, { offset: '50%' })
-            .on('hover', function() {
+            .on('click', function() {
                 if ($(this).data('lng') && $(this).data('lat')) {
 
                     $('.highlight').removeClass('highlight');
