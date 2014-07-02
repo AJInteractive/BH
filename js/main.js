@@ -263,12 +263,13 @@ function process() {
 
                       $(this).data('marker', marker);
                     } else if (direction == 'down') {
-                      // $(this).data('marker').addTo(map);
+                      $(this).data('marker').addTo(map);
                       $(this).data('marker').openPopup();
                     }
 
                     if (direction == 'up' && $(this).data('marker')) {
                       // $(this).data('marker').removeFrom(map);
+                      map.removeLayer($(this).data('marker'));
                       $(this).data('marker').openPopup();
                     }
                 }
