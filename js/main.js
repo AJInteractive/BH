@@ -2,7 +2,7 @@
 // Settings
 
 var mapSettings = {
-    center: [8.733077421211577, 8.580322265624998],
+    center: [8.483238563913513, 4.954833984374999],
     zoom: 6,
     maxZoom: 8,
     // dragging: false,
@@ -91,7 +91,7 @@ queue()
                 from: d.From,
                 to: d.To,
                 people: isNaN(parseInt(d.Number))?0:parseInt(d.Number),
-                dType: d['Internal/External'],
+                dType: d['Internal/External'].toLowerCase(),
                 desc: d.Cause,
                 type: 'displ'
             }
@@ -206,7 +206,7 @@ function process() {
 
     var start = data[0].date.getTime();
 
-    var bottom = 350; //aka top padding
+    var bottom = 0;//350; //aka top padding
 
     for (i = 0; i < data.length; i++) {
 
@@ -217,11 +217,18 @@ function process() {
             timestamp = data[i].date.getYear() + 1900;
         }
 
+        var sameMonth = (i > 0 && data[i].date.toString('MMMM') == data[i-1].date.toString('MMMM'));
+        var sameDate = (i > 0 && data[i].date.toString() == data[i-1].date.toString());
+
         // default spacing: 10px per day
         var top = 10*(data[i].date.getTime() - start)/(1000*3600*24);
 
         // don't overlap the previous event, add minimum space
-        if (top < bottom) top = bottom + 10;
+        if (top < bottom && sameDate) {
+          top = bottom + 10;
+        } else if (top < bottom) {
+          top = bottom + 20;
+        }
 
         // compress space
         if (top - bottom > 300) top = bottom + 300;
@@ -232,9 +239,16 @@ function process() {
                 id: 'A' + i,
                 year: timestamp,
                 month: data[i].date.toString('MMMM'),
-                sameMonth: (i > 0 && data[i].date.toString('MMMM') == data[i-1].date.toString('MMMM')),
+                sameMonth: sameMonth,
+                sameDate: sameDate,
                 day: data[i].date.toString('dS').replace('th', '<sup>th</sup>').replace('nd', '<sup>nd</sup>').replace('st', '<sup>st</sup>'),
-                description: data[i].desc
+                description: data[i].desc,
+                from: data[i].from,
+                to: data[i].to,
+                dType: data[i].dType,
+                injured: data[i].injured,
+                killed: data[i].killed,
+                location: data[i].location
               }
             ))
             .data({

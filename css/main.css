@@ -1,7 +1,9 @@
 html, body {
     padding: 0;
     margin: 0;
-    background-color: #af111c;
+    height: 100%;
+    /*background-color: #af111c;*/
+    background-color: white;
     font-family: 'Merriweather', serif;
 }
 
@@ -9,14 +11,20 @@ article {
     margin: 0;
     padding: 0;
     position: relative;
+    height: 100%;
 }
 
 header {
     z-index: 1500;
     position: relative;
-    background-color: rgba(175, 17, 28, .8);
+    /*background-color: rgba(175, 17, 28, .8);*/
+    background-color: rgba(0, 0, 0, .7);
+
+    height: 100%;
 
     padding: 5em 2em 1em 3em;
+
+    /*border-bottom: 10px solid white;*/
 
     color: white;
 }
@@ -49,13 +57,25 @@ section {
 footer {
     z-index: 1500;
     position: relative;
-    background-color: rgba(175, 17, 28, .8);
+    /*background-color: rgba(175, 17, 28, .8);*/
+    background-color: rgba(0, 0, 0, .7);
 
     padding: 3em 1em;
 
     color: white;
 }
 
+footer a {
+  color: white;
+}
+
+
+#timeline {
+    width: 30%;
+    /*background-color: rgba(175, 17, 28, .8);*/
+    /*background-color: rgba(0, 0, 0, .7);*/
+    background-color: rgba(255, 255, 255, .7);
+}
 
 #timeline > div {
     width: 100%;
@@ -64,31 +84,44 @@ footer {
 
 #timeline h6 {
     font-size: 32px;
-    margin: 0 .5em;
+    margin: 3em .5em;
     background-color: rgba(255, 255, 255, .8);
-    border-bottom: 2px solid #af111c;
+    border-top: 2px solid #af111c;
+    text-align: center;
 }
 
 #timeline time {
   display: block;
-  float: left;
-  width: 15%;
-  color: black;
-  background-color: rgba(255, 255, 255, .8);
-  border-top: 1px solid rgba(255, 255, 255, .8);
-  border-bottom: 1px solid #af111c;
+  /*float: left;*/
+  /*width: 15%;*/
+  color: rgba(0, 0, 0, .8);
+  /*background-color: rgba(255, 255, 255, .8);*/
+  /*border-bottom: 1px solid rgba(255, 255, 255, .8);*/
+  border-top: 1px solid #af111c;
+  padding-top: .2em;
   padding-left: .5em;
   padding-right: .5em;
-  text-align: right;
+  margin-top: 1em;
+  margin-bottom: .5em;
+  /*text-align: right;*/
+  text-align: center;
+
 }
 
 #timeline > div > div {
-  float: left;
-  width: 83%;
+  /*float: left;*/
+  /*width: 83%;*/
+  text-align: center;
+  margin-left: .5em;
+  margin-right: .5em;
 }
 
-.same-true {
-  color: transparent;
+.sameMonth-true {
+  /*color: transparent;*/
+}
+
+.sameDate-true {
+  display: none !important;
 }
 
 .attack > div > span {
@@ -99,6 +132,7 @@ footer {
 .event > div > span {
   background-color: rgba(255, 255, 255, .8);
   color: black;
+  /*font-style: italic;*/
 }
 
 .displ > div > span {
@@ -106,7 +140,9 @@ footer {
   color: red;
 }
 
-
+.sc {
+  font-variant: small-caps;
+}
 
 
 
