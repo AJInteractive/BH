@@ -230,7 +230,7 @@ function process() {
 
               if ($(this).data('from') || $(this).data('to')) {
                 $('.highlight').removeClass('highlight');
-                $(this).addClass('highlight');
+                $(this).find('>div').addClass('highlight');
 
                 if (direction == 'down') {
                   // getShapeByName($(this).data('from')).setStyle(fromStyle);
@@ -248,7 +248,7 @@ function process() {
               if ($(this).data('lng') && $(this).data('lat')) {
 
                     $('.highlight').removeClass('highlight');
-                    $(this).addClass('highlight');
+                    $(this).find('>div').addClass('highlight');
 
                     var latlng = L.latLng($(this).data('lat'), $(this).data('lng'));
 
@@ -278,7 +278,7 @@ function process() {
                 if ($(this).data('lng') && $(this).data('lat')) {
 
                     $('.highlight').removeClass('highlight');
-                    $(this).addClass('highlight');
+                    $(this).find('>div').addClass('highlight');
 
                     var latlng = L.latLng($(this).data('lat'), $(this).data('lng'));
 
