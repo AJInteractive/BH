@@ -26,11 +26,23 @@
 
        <article>
             <header>
-                <h1>Haram Ipsum</h1>
+                <h1>Abuses by police and military</h1>
 
-                <p>Nam ut ipsum facilisis, bibendum diam at, cursus mauris. Sed lobortis tempor ultrices. Ut faucibus, nisl id suscipit consequat, massa ipsum varius purus, et auctor nisl quam at leo. Sed in vehicula purus. Quisque diam arcu, dapibus et justo a, vulputate posuere purus. Morbi aliquam vitae mauris quis condimentum. Pellentesque ut dignissim nunc, id lacinia velit. Morbi augue lorem, tempus gravida porta nec, molestie sed nunc. Nam tincidunt commodo nisl, vitae auctor urna sodales ac. Nulla augue mi, porttitor quis est in, placerat venenatis neque. Vivamus vulputate arcu at nisi feugiat, in lobortis sapien ornare.</p>
+<p>Nigeria’s security forces have been accused of abuses by human rights watchdog groups throughout the government’s campaign against rebel group Boko Haram.</p>
 
-                <p>Morbi vitae erat massa. Sed nibh ligula, vestibulum in tortor id, pulvinar venenatis nisi. Nulla facilisi. Suspendisse potenti. Aliquam semper lobortis tempor. Phasellus at orci libero. Morbi eget quam quis erat venenatis fermentum. Pellentesque consectetur ante nec porta porttitor. Ut tellus orci, cursus eget ornare vitae, pellentesque non arcu. Quisque ut sem in quam egestas vehicula. Phasellus elementum, elit nec venenatis viverra, eros augue malesuada ante, id dignissim neque tortor eget risus. Morbi id consectetur sem. Pellentesque egestas faucibus ligula eu varius.</p>
+<p>In June 2014, four Nigerian newspapers accused soldiers of raiding their offices, saying the seizure of their papers over “security concerns” amounted to censorship.</p>
+
+<p>At the same time, hundreds of Nigerians are still being held without charge by the police on the basis that they could be connected to Boko Haram.</p>
+
+<p>Navi Pillay, the UN high commissioner for human rights, said the abuses were “openly acknowledged” and that lack of trust in the security forces was alienating the community and creating “fertile ground for Boko Haram to cultivate new recruits".</p>
+
+<p>In a 2012 report, Amnesty International described the security forces in Nigeria as being “out of control” and included accusations of extrajudicial killings, deaths, and bodies being left on roadsides.</p>
+
+<p>Security forces were also accused of burning homes during raids in 2012, performed as part of a Boko Haram crackdown. In the same report, HRW said security forces executed Boko Haram suspects without following any legal procedures, and without solid evidence of the victims’ involvement in the group.</p>
+
+<p>In 2013, Human Rights Watch released images that it claimed showed the military was “engaged more in destruction than protection” while hunting for Boko Haram members in the northern town of Baga.</p>
+
+<p>International media reported that 4,000 houses had been burned and about 200 people had been killed in the raids.</p>
 
                 <p class="center">Scroll down to explore the timeline</p>
 
@@ -41,10 +53,6 @@
             <section id="timeline"></section>
 
             <footer>
-                <p>Donec interdum enim nec fringilla congue. Nullam placerat mauris quis velit malesuada, a facilisis turpis rhoncus. Praesent vel orci justo. Cras sollicitudin pellentesque orci. Cras convallis nisl sed pretium sagittis. Donec sed est erat. Mauris consequat nunc id dapibus dignissim. Quisque at lacus volutpat metus convallis mollis dictum eget est. Nunc sodales ac quam id elementum. Aliquam sodales lacus non molestie posuere. In aliquet nisl at venenatis placerat. Vestibulum feugiat faucibus commodo. Aenean ultricies et orci eu ultrices.</p>
-
-
-
                 <p>© 2014, Al Jazeera. Written and produced by <a href="https://twitter.com/Flip_Stewart">Philippa Stewart</a> and <a href="https://twitter.com/gridinoc">Laurian Gridinoc</a>.</p>
 
                 <p><small>Map <span></span></small></p>
@@ -53,6 +61,7 @@
 
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.4/waypoints.min.js"></script>
         <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="//d3js.org/queue.v1.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
@@ -64,7 +73,6 @@
 		    <script src="js/JS.Class-4.0.5/src/loader-browser.js"></script>
 
         <script src="bower_components/leaflet-providers/leaflet-providers.js"></script>
-        <!-- // <script src="bower_components/leaflet-heat/dist/leaflet-heat.js"></script> -->
 
         <script src="js/main.js"></script>
 
@@ -76,8 +84,8 @@
             <div>
               <span>
                 <span class="sc">attack</span>
-                <br>
                 <small>
+                <br>
                 <%= location %>
                 <% if (injured || killed) { %>
                 <br>
@@ -89,8 +97,8 @@
                 <% if (injured) { %>,<% } %>
                 <%= killed %> killed
                 <% } %>
-                </small>
                 <br>&nbsp;<br>
+                </small>
                 <%= description %>
               </span>
             </div>
@@ -112,12 +120,19 @@
             <div>
               <span>
                 <span class="sc"><%= dType %> displacement</span>
-                <br>
                 <small>
-                <span class="sc">from </span><%= from %>
-                <span class="sc">to </span><%= to %>
+                <br>
+                <span class="sc">from </span>
+                <br>
+                <%= from %>
+                <% if (to) { %>
+                <br>
+                <span class="sc">to </span>
+                <br>
+                <%= to %>
+                <% } %>
+                <br><span class="sc">due to</span><br>
                 </small>
-                <br>&nbsp;<br>
                 <%= description %>
               </span>
             </div>

@@ -22,6 +22,23 @@ var defaultStyle = {
     fillColor: '#ff0000'
 };
 
+var fromStyle = {
+    color: '#ff0000',
+    weight: 1,
+    opacity: 0.5,
+    fillOpacity: 0.8,
+    fillColor: '#ff0000'
+};
+
+var toStyle = {
+    color: '#00ff00',
+    weight: 1,
+    opacity: 0.5,
+    fillOpacity: 0.8,
+    fillColor: '#00ff00'
+};
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -47,6 +64,16 @@ shapes = L.geoJson(null, {
     style: defaultStyle
 });
 shapes.addTo(map);
+
+var getShapeByName = function (name) {
+  for (sid in shapes._layers) {
+    if (shapes._layers[sid].feature.properties.NAME_1 == name) return shapes._layers[sid];
+  }
+
+  return {
+    setStyle: function(){}
+  };
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // queue loading of JS.Command, 3 CSV files and shapes
@@ -122,81 +149,6 @@ queue()
     });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//// !!!!!
-
-//Create custom command, pass args in init, keep exec/undo with no param... think Prevayler.
-
-//!!!!!
-
-// var someCounter = 0;
-// var incrementCounter;
-//         incrementCounter = new Command({
-//             execute: function() {
-//                 someCounter += 1;
-//             },
-//             undo: function() {
-//                 someCounter -= 1;
-//             }
-//         });
-
-
-
-
-
-
-
-
-
-// var markerLayers = new L.LayerGroup();
-
-// map.addLayer(markerLayers);
-
-// L.control.layers({
-//     "shapeLayer": shapeLayer,
-//     "markers": markerLayers
-// }).addTo(map);
-
-
-
-// d3.csv('data/satpdatadates.csv', function(data) {
-//     for (var i = 0; i < data.length; i++) {
-//         var lat = data[i].Lat;
-//         var lng = data[i].Long;
-
-//         if (!lat || !lng) continue;
-
-//         var latlng = L.latLng(parseFloat(lat), parseFloat(lng));
-
-//         var marker = L.marker(latlng, {
-//             title: data[i].Killed
-//         }).addTo(markerLayers);
-//         marker.bindPopup(data[i].Incident);
-
-//         heat.addLatLng(latlng);
-
-//     }
-// });
-
-
-
 function process() {
     console.log('Rows ', data.length);
     console.log('First row', data[0]);
@@ -254,7 +206,10 @@ function process() {
             .data({
                 lat: data[i].lat,
                 lng: data[i].lng,
-                index: i
+                index: i,
+                description: data[i].desc,
+                from: data[i].from,
+                to: data[i].to
             })
             .css({
                 position: 'absolute',
@@ -262,19 +217,69 @@ function process() {
                 zIndex: i
             })
             .appendTo($timeline)
-            .on('hover', function() {
-                if ($(this).data('lng') && $(this).data('lat')) {
-                    console.log($(this).data('lat'), $(this).data('lng'));
-                    // map.setView(L.latLng($(this).data('lat'), $(this).data('lng')));
-                    // redrawHeatmap(data.slice(0, $(this).data('index')));
+            .waypoint(function(direction) {
+
+              if ($(this).data('from') || $(this).data('to')) {
+                $('.highlight').removeClass('highlight');
+                $(this).addClass('highlight');
+
+                if (direction == 'down') {
+                  getShapeByName($(this).data('from')).setStyle(fromStyle);
+                  getShapeByName($(this).data('to')).setStyle(toStyle);
+                } else {
+                  // getShapeByName($(this).data('from')).setStyle(defaultStyle);
+                  // getShapeByName($(this).data('to')).setStyle(defaultStyle);
+                }
+              }
+
+              if ($(this).data('lng') && $(this).data('lat')) {
+
+                    $('.highlight').removeClass('highlight');
+                    $(this).addClass('highlight');
+
                     var latlng = L.latLng($(this).data('lat'), $(this).data('lng'));
 
                     if (! $(this).data('marker')) {
                       var marker = L.marker(latlng, {
                           // title: data[i].Killed
+                          riseOnHover: true
                       }).addTo(map);
-                      // marker.bindPopup(data[i].Incident);
+
+                      marker.bindPopup($(this).data('description'));
+                      marker.openPopup();
+
                       $(this).data('marker', marker);
+                    } else if (direction == 'down') {
+                      // $(this).data('marker').addTo(map);
+                      $(this).data('marker').openPopup();
+                    }
+
+                    if (direction == 'up' && $(this).data('marker')) {
+                      // $(this).data('marker').removeFrom(map);
+                      $(this).data('marker').openPopup();
+                    }
+                }
+            }, { offset: '50%' })
+            .on('hover', function() {
+                if ($(this).data('lng') && $(this).data('lat')) {
+
+                    $('.highlight').removeClass('highlight');
+                    $(this).addClass('highlight');
+
+                    var latlng = L.latLng($(this).data('lat'), $(this).data('lng'));
+
+                    if (! $(this).data('marker')) {
+                      var marker = L.marker(latlng, {
+                          // title: data[i].Killed
+                          riseOnHover: true
+                      }).addTo(map);
+
+                      marker.bindPopup($(this).data('description'));
+                      marker.openPopup();
+
+                      $(this).data('marker', marker);
+                    } else {
+                      $(this).data('marker').openPopup();
                     }
                 }
             });
