@@ -30,7 +30,7 @@ header {
 
     color: white;
     clear: both;
-    height: 700px;
+    height: 900px;
 
     -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.5);
     -moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.5);
@@ -50,29 +50,68 @@ header .side {
 header .rest {
   width: 70%;
   float: left;
-  text-align: center;
+  /*text-align: center;*/
 }
 
-.rest .text {
+.rest nav {
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 3em 3em 0 3em;
+}
+
+.rest nav ol {
+  list-style: none;
+  display: block;
+  border-bottom: 2px solid white;
+  margin: 0;
+  padding: 0;
+}
+
+.rest nav ol li {
+  display: inline-block;
+  width: 49%;
+  text-align: center;
+  margin: 0;
+  padding: .6em 0 .6em 0;
+  cursor: pointer;
+}
+
+li.selected {
+  background-color: rgba(175, 17, 28, .8);
+}
+
+.rest > div {
+  padding: 2em 3em;
+  text-align: left;
+  display: none;
+}
+
+.rest > div.selected {
+  display: block;
+}
+
+
+/*.rest .text {
   margin: 5.3em 5em 1em 5em;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
-}
+}*/
 
-.text p {
+/*.text p {
     width: 20em;
     margin: 2em auto 2em auto;
-}
+}*/
 
-.text .legend {
+/*.text .legend {
   width: 20em;
   margin: 2em auto 2em auto;
   font-family: 'Merriweather Sans', sans-serif;
   font-weight: 800;
   font-style: italic;
-}
+}*/
 
-.legend div.deadly {
+/*.legend div.deadly {
   margin: 0 auto .5em auto;
   width: 2em;
   height: .7em;
@@ -86,7 +125,7 @@ header .rest {
   height: .7em;
   border: 1px solid white;
   background-color: green;
-}
+}*/
 
 .side h2 {
   font-weight: 300;
@@ -117,7 +156,7 @@ header .rest {
   position: absolute;
   width: 400px;
   width: 400px;
-  left: 55%;
+  left: 0;
   bottom: 0;
 }
 
@@ -200,7 +239,7 @@ footer {
     z-index: 1500;
     position: relative;
     background-color: rgba(0, 0, 0, .7);
-    height: 200px;
+    height: 300px;
 
     padding: .1em 0 .2em 0;
 
@@ -332,7 +371,7 @@ footer .map {
 #timeline time {
   display: block;
   color: rgba(0, 0, 0, .8);
-  border-top: 1px solid #af111c;
+  /*border-top: 1px solid #af111c;*/
   padding-top: .2em;
   padding-left: .5em;
   padding-right: .5em;
@@ -354,19 +393,19 @@ footer .map {
   display: none !important;
 }
 
-.attack > div > span {
+.attack > div  {
   background-color: rgba(175, 17, 28, .8);
   color: white;
 }
 
-.event > div > span {
+.event > div  {
   /*background-color: rgba(255, 255, 255, .8);*/
   background-color: rgba(0, 0, 0, .8);
   /*color: black;*/
   color: white;
 }
 
-.displ > div > span {
+.displ > div  {
   background-color: rgba(255, 255, 255, .8);
   color: red;
 }
@@ -377,7 +416,8 @@ footer .map {
 
 
 .highlight {
-  background-color: lightyellow;
+  /*background-color: lightyellow;*/
+  outline: 8px solid yellow;
 }
 
 .pace-running footer {
@@ -403,6 +443,16 @@ footer .map {
 .pace-running .rest img {
   display: none;
 }
+
+.pace-running .down {
+  display: none;
+}
+
+.pace-running .li {
+  display: none;
+}
+
+
 
 .pace-done {
 }

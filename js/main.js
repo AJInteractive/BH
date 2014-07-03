@@ -352,7 +352,20 @@ function process() {
     $timeline.css('height', bottom + 50);
 }
 
+/////
 
+$('#head-text-t1h').click(function() {
+  $('header .selected').removeClass('selected');
+  $(this).addClass('selected');
+  $('#head-text-t1').addClass('selected');
+  $('.cutout').attr('src', 'img/boko.png');
+});
 
+$('#head-text-t2h').click(function() {
+  $('header .selected').removeClass('selected');
+  $(this).addClass('selected');
+  $('#head-text-t2').addClass('selected');
+  $('.cutout').attr('src', 'img/soldier.png');
+});
 
 
