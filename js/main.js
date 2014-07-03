@@ -65,6 +65,9 @@ shapes = L.geoJson(null, {
 });
 shapes.addTo(map);
 
+var markerLayers = new L.LayerGroup();
+map.addLayer(markerLayers);
+
 var getShapeByName = function (name) {
   for (sid in shapes._layers) {
     if (shapes._layers[sid].feature.properties.NAME_1 == name) return shapes._layers[sid];
@@ -173,6 +176,22 @@ queue()
     });
 
 
+$(window).bind('resize', function(e) {
+    window.resizeEvt;
+    $(window).resize(function() {
+        clearTimeout(window.resizeEvt);
+        window.resizeEvt = setTimeout(function() {
+            reset();
+            process();
+        }, 250);
+    });
+});
+
+function reset() {
+  markerLayers.clearLayers();
+  $('#timeline').empty();
+}
+
 function process() {
     console.log('Rows ', data.length);
     console.log('First row', data[0]);
@@ -266,19 +285,19 @@ function process() {
                     if (! $(this).data('marker')) {
                       var marker = L.marker(latlng, {
                           riseOnHover: true
-                      }).addTo(map);
+                      }).addTo(markerLayers);
 
                       marker.bindPopup($(this).data('description'));
                       marker.openPopup();
 
                       $(this).data('marker', marker);
                     } else if (direction == 'down') {
-                      $(this).data('marker').addTo(map);
+                      $(this).data('marker').addTo(markerLayers);
                       $(this).data('marker').openPopup();
                     }
 
                     if (direction == 'up' && $(this).data('marker')) {
-                      map.removeLayer($(this).data('marker'));
+                      markerLayers.removeLayer($(this).data('marker'));
                       $(this).data('marker').openPopup();
                     }
                 }
@@ -294,7 +313,7 @@ function process() {
                     if (! $(this).data('marker')) {
                       var marker = L.marker(latlng, {
                           riseOnHover: true
-                      }).addTo(map);
+                      }).addTo(markerLayers);
 
                       marker.bindPopup($(this).data('description'));
                       marker.openPopup();

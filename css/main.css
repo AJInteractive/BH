@@ -2,8 +2,12 @@ html, body {
     padding: 0;
     margin: 0;
     width: 100%;
-    background-color: white;
+    background-color: #bfe3fe;
     font-family: 'Merriweather', serif;
+}
+
+.leaflet-container {
+  background-color: #bfe3fe;
 }
 
 article {
@@ -12,6 +16,7 @@ article {
     position: relative;
     max-width: 1200px;
     min-width: 768px;
+    /*width: 1200px;*/
 }
 
 
@@ -34,6 +39,7 @@ header {
 
 header .side {
   width: 30%;
+  /*width: 360px;*/
   height: 100%;
   background-color: rgba(175, 17, 28, .8);
   float: left;
@@ -216,9 +222,28 @@ footer a {
   background-color: lightyellow;
 }
 
+.pace-running footer {
+  display: none;
+}
 
+.pace-running .side p {
+  display: none;
+}
 
+.pace-running .side h1 {
+  display: none;
+}
 
+.pace-running .side h2 {
+  display: none;
+}
+
+.pace-running .rest .text {
+  display: none;
+}
+
+.pace-done {
+}
 
 
 .zombie {
