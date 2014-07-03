@@ -48,7 +48,7 @@ var toStyle = {
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // let there be globals
-var map, tiles, shapes, data, Command;
+var map, tiles, shapes, data, Command, sheet;
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // setup base map
@@ -84,54 +84,22 @@ var setStyleOnEach = function (name, style) {
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
-// queue loading of JS.Command, 3 CSV files and shapes
+
 queue()
     .defer(function (module, callback) {
         JS.require(module, function(Module) {
             callback(null, Module);
         });
     }, 'JS.Command')
-    .defer(d3.csv,
-        'data/Boko Haram Test data longs latts - Sheet1.csv',
-        function (d) {
-            // normalise field names
-            return {
-                date: new Date(d.Date),
-                lng: parseFloat(d.Lng),
-                lat: parseFloat(d.Lat),
-                killed: isNaN(parseInt(d.Deaths))?0:parseInt(d.Deaths),
-                injured: isNaN(parseInt(d.Injured))?0:parseInt(d.Injured),
-                location: d.Location,
-                desc: d['Attack type'],
-                type: 'attack'
-            }
-        })
-    .defer(d3.csv,
-        'data/Boko Haram Timeline - Timeline.csv',
-        function (d) {
-            // normalise field names
-            return {
-                date: new Date(d.Date),
-                desc: d.Event,
-                important: d.Red,
-                type: 'event'
-            }
-        })
-    .defer(d3.csv,
-        'data/Displacement - Boko Haram - IDP-CLEAN.csv',
-        function (d) {
-            // normalise field names
-            return {
-                date: new Date(d.Date),
-                from: d.From,
-                to: d.To,
-                people: isNaN(parseInt(d.Number))?0:parseInt(d.Number),
-                dType: d['Internal/External'].toLowerCase(),
-                desc: d.Cause,
-                type: 'displ'
-            }
-        })
+    .defer(function(callback){
+      Tabletop.init({
+          key: '1fNmHh1m3qKvN-RSueCzcZMHaL-a1I0dPzInxI3Ei-YI',
+          callback: function(_sheet, tabletop) {
+              callback(null, _sheet);
+          },
+          simpleSheet: false
+      });
+    })
     .defer(function(callback){
         var _shapes = omnivore.topojson('data/NGA_adm1-topo.json', null, shapes)
             .on('ready', function() {
@@ -142,11 +110,58 @@ queue()
             });
         callback(null, _shapes);
     })
-    .await(function(error, _Command, data1, data2, data3, _shapes) {
+    .await(function(error, _Command, _sheet, _shapes) {
         if (error) return console.err(error);
 
         // globals
         Command = _Command;
+
+        sheet = _sheet;
+        console.log(sheet);
+
+        var data1 = [];
+        var data2 = [];
+        var data3 = [];
+
+        //ATTACKS
+        for (var i = 0; i < sheet.ATTACKS.elements.length; i++) {
+          var d = sheet.ATTACKS.elements[i];
+          data1.push({
+            date: new Date(d.date),
+            lng: parseFloat(d.lng),
+            lat: parseFloat(d.lat),
+            killed: isNaN(parseInt(d.deaths))?0:parseInt(d.deaths),
+            injured: isNaN(parseInt(d.injured))?0:parseInt(d.injured),
+            location: d.location,
+            desc: d.description,
+            type: 'attack'
+          });
+        }
+
+        //TIMELINE
+        for (var i = 0; i < sheet.TIMELINE.elements.length; i++) {
+          var d = sheet.TIMELINE.elements[i];
+          data2.push({
+            date: new Date(d.date),
+            desc: d.event,
+            important: d.red,
+            type: 'event'
+          });
+        }
+
+        //DISPLACEMENT
+        for (var i = 0; i < sheet.DISPLACEMENT.elements.length; i++) {
+          var d = sheet.DISPLACEMENT.elements[i];
+          data2.push({
+            date: new Date(d.date),
+            from: d.from,
+            to: d.to,
+            people: isNaN(parseInt(d.number))?0:parseInt(d.number),
+            dType: d.internalexternal.toLowerCase(),
+            desc: d.cause,
+            type: 'displ'
+          });
+        }
 
         // merge data and sort by date
         data = data1.concat(data2).concat(data3);
