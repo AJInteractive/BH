@@ -233,13 +233,9 @@ function process() {
                 $(this).find('>div').addClass('highlight');
 
                 if (direction == 'down') {
-                  // getShapeByName($(this).data('from')).setStyle(fromStyle);
                   setStyleOnEach($(this).data('from'), fromStyle);
-                  // getShapeByName($(this).data('to')).setStyle(toStyle);
                   setStyleOnEach($(this).data('to'), toStyle);
                 } else {
-                  // getShapeByName($(this).data('from')).setStyle(defaultStyle);
-                  // getShapeByName($(this).data('to')).setStyle(defaultStyle);
                   setStyleOnEach($(this).data('from'), defaultStyle);
                   setStyleOnEach($(this).data('to'), defaultStyle);
                 }
@@ -254,7 +250,6 @@ function process() {
 
                     if (! $(this).data('marker')) {
                       var marker = L.marker(latlng, {
-                          // title: data[i].Killed
                           riseOnHover: true
                       }).addTo(map);
 
@@ -268,7 +263,6 @@ function process() {
                     }
 
                     if (direction == 'up' && $(this).data('marker')) {
-                      // $(this).data('marker').removeFrom(map);
                       map.removeLayer($(this).data('marker'));
                       $(this).data('marker').openPopup();
                     }
@@ -284,7 +278,6 @@ function process() {
 
                     if (! $(this).data('marker')) {
                       var marker = L.marker(latlng, {
-                          // title: data[i].Killed
                           riseOnHover: true
                       }).addTo(map);
 

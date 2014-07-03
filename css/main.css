@@ -2,8 +2,6 @@ html, body {
     padding: 0;
     margin: 0;
     width: 100%;
-    /*height: 100%;*/
-    /*background-color: #af111c;*/
     background-color: white;
     font-family: 'Merriweather', serif;
 }
@@ -12,46 +10,29 @@ article {
     margin: 0 auto 0 auto;
     padding: 0;
     position: relative;
-    /*height: 100%;*/
     max-width: 1200px;
     min-width: 768px;
 }
-
-
-/*font-family: 'Merriweather Sans', sans-serif;*/
 
 
 
 header {
     z-index: 1500;
     position: relative;
-    /*background-color: rgba(175, 17, 28, .8);*/
     background-color: rgba(0, 0, 0, .7);
 
-    /*height: 100%;*/
-    /*margin-top: -1px;*/
     padding-top: 1px;
 
-    /*border-bottom: 10px solid white;*/
-
     color: white;
-
     clear: both;
-
     height: 600px;
 
-        -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.5);
--moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.5);
-box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
-}
-
-header h1 {
-    /*margin: 0 0 2em 0;*/
-    /*clear: both;*/
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
 }
 
 header .side {
-  /*width: 360px;*/
   width: 30%;
   height: 100%;
   background-color: rgba(175, 17, 28, .8);
@@ -62,10 +43,7 @@ header .side {
 
 header .rest {
   width: 70%;
-  /*background-color: rgba(175, 17, 28, .8);*/
-  /*outline: 1px solid yellow;*/
   float: left;
-  /*clear: both;*/
   text-align: center;
 }
 
@@ -89,7 +67,6 @@ header .rest {
 }
 
 .legend div {
-  /*display: inline-block;*/
   margin: 0 auto .5em auto;
   width: 2em;
   height: .7em;
@@ -119,25 +96,17 @@ header .rest {
   position: absolute;
   text-align: center;
   width: 100%;
-  /*padding: 0 30%;*/
   bottom: 0;
 }
 
 .side img {
   position: absolute;
-  /*outline: 1px solid yellow;*/
   width: 400px;
   width: 400px;
   left: 55%;
   bottom: 0;
 }
 
-
-/*p.center {
-    width: 33%;
-    margin: 3em auto 0 auto;
-}
-*/
 
 figure {
     position: fixed;
@@ -158,17 +127,15 @@ section {
 footer {
     z-index: 1500;
     position: relative;
-    /*background-color: rgba(175, 17, 28, .8);*/
     background-color: rgba(0, 0, 0, .7);
 
     padding: 3em 1em;
 
     color: white;
 
-
-        -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.5);
--moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.5);
-box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
 }
 
 footer a {
@@ -178,19 +145,16 @@ footer a {
 
 #timeline {
     width: 30%;
-    /*width: 360px;*/
-    /*background-color: rgba(175, 17, 28, .8);*/
-    /*background-color: rgba(0, 0, 0, .7);*/
     background-color: rgba(255, 255, 255, .7);
     -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.5);
--moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.5);
-box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
-
+    -moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
 }
 
 #timeline > div {
     width: 100%;
     clear:both;
+
 }
 
 #timeline h6 {
@@ -203,26 +167,16 @@ box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
 
 #timeline time {
   display: block;
-  /*float: left;*/
-  /*width: 15%;*/
   color: rgba(0, 0, 0, .8);
-  /*background-color: rgba(255, 255, 255, .8);*/
-  /*border-bottom: 1px solid rgba(255, 255, 255, .8);*/
   border-top: 1px solid #af111c;
   padding-top: .2em;
   padding-left: .5em;
   padding-right: .5em;
-  /*margin-top: 1em;*/
-  padding-bottom: 1em;
   margin-bottom: .5em;
-  /*text-align: right;*/
   text-align: center;
-
 }
 
 #timeline > div > div {
-  /*float: left;*/
-  /*width: 83%;*/
   text-align: center;
   margin-left: .5em;
   margin-right: .5em;
@@ -246,7 +200,6 @@ box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
   background-color: rgba(0, 0, 0, .8);
   /*color: black;*/
   color: white;
-  /*font-style: italic;*/
 }
 
 .displ > div > span {
@@ -262,6 +215,8 @@ box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
 .highlight {
   background-color: lightyellow;
 }
+
+
 
 
 
