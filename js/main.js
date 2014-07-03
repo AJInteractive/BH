@@ -5,7 +5,7 @@ var mapSettings = {
     center: [8.483238563913513, 4.954833984374999],
     zoom: 6,
     maxZoom: 8,
-    // dragging: false,
+    dragging: false,
     touchZoom: false,
     // doubleClickZoom: false,
     boxZoom: false,

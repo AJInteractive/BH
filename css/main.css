@@ -2,6 +2,7 @@ html, body {
     padding: 0;
     margin: 0;
     width: 100%;
+    height: 100%;
     background-color: #bfe3fe;
     font-family: 'Merriweather', serif;
 }
@@ -17,6 +18,7 @@ article {
     max-width: 1200px;
     min-width: 768px;
     /*width: 1200px;*/
+    /*height: 100%;*/
 }
 
 
@@ -31,10 +33,14 @@ header {
     color: white;
     clear: both;
     height: 900px;
+    /*height: 100%;*/
 
     -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.5);
     -moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.5);
     box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.5);
+
+    /*display: table;*/
+    /*display: flex;*/
 }
 
 header .side {
@@ -45,12 +51,20 @@ header .side {
   float: left;
   text-align: center;
   position: relative;
+  /*display: table-cell;*/
 }
+
+/*header .side2 {
+  height: 100%;
+}*/
 
 header .rest {
   width: 70%;
   float: left;
+  height: 100%;
   /*text-align: center;*/
+  /*display: table-cell;*/
+  overflow: scroll;
 }
 
 .rest nav {
@@ -154,8 +168,8 @@ li.selected {
 
 .side img.cutout {
   position: absolute;
-  width: 400px;
-  width: 400px;
+  width: 300px;
+  width: 300px;
   left: 0;
   bottom: 0;
 }
@@ -467,6 +481,10 @@ footer .map {
 .pace-running nav {
   display: none;
 }
+
+/*.pace-running header {
+  display: none;
+}*/
 
 
 
