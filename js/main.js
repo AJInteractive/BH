@@ -26,7 +26,7 @@ var fromStyle = {
     color: '#ff0000',
     weight: 1,
     opacity: 0.5,
-    fillOpacity: 0.8,
+    fillOpacity: 0.6,
     fillColor: '#ff0000'
 };
 
@@ -34,7 +34,7 @@ var toStyle = {
     color: '#00ff00',
     weight: 1,
     opacity: 0.5,
-    fillOpacity: 0.8,
+    fillOpacity: 0.6,
     fillColor: '#00ff00'
 };
 
@@ -159,6 +159,8 @@ queue()
             date: new Date(d.date),
             from: d.from,
             to: d.to,
+            fromfuzzy: d.fromfuzzy,
+            tofuzzy: d.tofuzzy,
             people: isNaN(parseInt(d.number))?0:parseInt(d.number),
             dType: d.internalexternal.toLowerCase(),
             desc: d.cause,
@@ -172,9 +174,39 @@ queue()
             return a.date.getTime() - b.date.getTime();
         });
 
+        magic(sheet.COPY.elements);
         process();
     });
 
+function magic(rules) {
+  for (var i = 0; i < rules.length; i++) {
+    var rule = rules[i];
+    var $target = $(rule.selector);
+
+    if (rule.method == 'text') {
+      $target.text(rule.content);
+    }
+
+    if (rule.method == 'html') {
+      $target.html(rule.content);
+    }
+
+    if (rule.method == 'prepend') {
+      var $el = $(document.createElement(rule.element));
+      if (rule.content) $el.html(rule.content);
+      $target.prepend($el);
+    }
+
+    if (rule.method == 'append') {
+      var $el = $(document.createElement(rule.element));
+      if (rule.content) $el.html(rule.content);
+      $target.append($el);
+    }
+
+  }
+
+  // $('header').css('height', $('.rest').height());
+}
 
 $(window).bind('resize', function(e) {
     window.resizeEvt;
@@ -183,6 +215,7 @@ $(window).bind('resize', function(e) {
         window.resizeEvt = setTimeout(function() {
             reset();
             process();
+            // $('header').css('height', $('.rest').height());
         }, 250);
     });
 });
@@ -193,6 +226,9 @@ function reset() {
 }
 
 function process() {
+
+
+
     console.log('Rows ', data.length);
     console.log('First row', data[0]);
     console.log('Last row', data[data.length - 1]);
@@ -240,6 +276,8 @@ function process() {
                 description: data[i].desc,
                 from: data[i].from,
                 to: data[i].to,
+                fromfuzzy: data[i].fromfuzzy,
+                tofuzzy: data[i].tofuzzy,
                 dType: data[i].dType,
                 injured: data[i].injured,
                 killed: data[i].killed,
@@ -252,7 +290,9 @@ function process() {
                 index: i,
                 description: data[i].desc,
                 from: data[i].from,
-                to: data[i].to
+                to: data[i].to,
+                injured: data[i].injured,
+                killed: data[i].killed
             })
             .css({
                 position: 'absolute',
@@ -285,7 +325,17 @@ function process() {
                     if (! $(this).data('marker')) {
                       var marker = L.marker(latlng, {
                           riseOnHover: true
-                      }).addTo(markerLayers);
+                      });
+
+                      marker.setIcon(L.icon({
+                          "iconUrl": "img/attack.png",
+                          "iconSize": [22, 22],   // size of the icon
+                          "iconAnchor": [11, 11], // point of the icon which will correspond to marker's location
+                          "popupAnchor": [0, -5], // point from which the popup should open relative to the iconAnchor
+                          "className": "dot"
+                      }));
+
+                      marker.addTo(markerLayers);
 
                       marker.bindPopup($(this).data('description'));
                       marker.openPopup();
@@ -301,29 +351,29 @@ function process() {
                       $(this).data('marker').openPopup();
                     }
                 }
-            }, { offset: '50%' })
-            .on('click', function() {
-                if ($(this).data('lng') && $(this).data('lat')) {
+            }, { offset: '50%' });
+            // .on('click', function() {
+            //     if ($(this).data('lng') && $(this).data('lat')) {
 
-                    $('.highlight').removeClass('highlight');
-                    $(this).find('>div').addClass('highlight');
+            //         $('.highlight').removeClass('highlight');
+            //         $(this).find('>div').addClass('highlight');
 
-                    var latlng = L.latLng($(this).data('lat'), $(this).data('lng'));
+            //         var latlng = L.latLng($(this).data('lat'), $(this).data('lng'));
 
-                    if (! $(this).data('marker')) {
-                      var marker = L.marker(latlng, {
-                          riseOnHover: true
-                      }).addTo(markerLayers);
+            //         if (! $(this).data('marker')) {
+            //           var marker = L.marker(latlng, {
+            //               riseOnHover: true
+            //           }).addTo(markerLayers);
 
-                      marker.bindPopup($(this).data('description'));
-                      marker.openPopup();
+            //           marker.bindPopup($(this).data('description'));
+            //           marker.openPopup();
 
-                      $(this).data('marker', marker);
-                    } else {
-                      $(this).data('marker').openPopup();
-                    }
-                }
-            });
+            //           $(this).data('marker', marker);
+            //         } else {
+            //           $(this).data('marker').openPopup();
+            //         }
+            //     }
+            // });
 
         // compute next space
         bottom = top + $event.height();

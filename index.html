@@ -31,24 +31,25 @@
        <article>
             <header>
               <div class="side">
-                  <h2>Boko Haram</h2>
-                  <h1>Reports of military abuse</h1>
+                  <h2 class="chapeau"></h2>
+                  <h1 class="title"></h1>
 
-                  <img src="img/boko.png">
+                  <img class="cutout" src="img/boko.png">
                   <p>Scroll for the timeline</p>
+                  <div class="down"><img src="img/d.png"></div>
               </div>
 
               <div class="rest">
 
                 <div class="text">
-                    <p>Nigeria’s security forces have been accused of abuses by human rights watchdog groups throughout the government’s campaign against rebel group Boko Haram.</p>
-
-                    <p>In June 2014, four Nigerian newspapers accused soldiers of raiding their offices, saying the seizure of their papers over “security concerns” amounted to censorship.</p>
-
-                    <div class="legend">
-                      <div class="red"></div>
-                      Deadly incident
-                    </div>
+                  <div id="head-text">
+                  </div>
+                  <div class="legend">
+                    <div class="deadly"></div>
+                    Deadly incident
+                    <div class="nondeadly"></div>
+                    Non-deadly incident
+                  </div>
                 </div>
 
                 <img src="img/ajlogo.png">
@@ -56,12 +57,36 @@
             </header>
 
 
-            <section id="timeline"></section>
+            <section id="timeline">
+
+<!--               <div class="scrollUp">
+                <h4 class="chapeau"></h4>
+                <h3 class="title"></h3>
+                <div><img class="up" src="img/u.png"></div>
+              </div> -->
+            </section>
 
             <footer>
-                <p>© 2014, Al Jazeera. Written and produced by <a href="https://twitter.com/Flip_Stewart">Philippa Stewart</a> and <a href="https://twitter.com/gridinoc">Laurian Gridinoc</a>.</p>
 
-                <p><small>Map <span></span></small></p>
+                <div class="fside">
+                  <h4 class="chapeau">Foo</h6>
+                  <h3 class="title">Bar Baz</h5>
+                </div>
+
+                <div class="aj">
+                  <img class="logo" src="img/ajlogo.png">
+                  <a class="f" href=""><img class="f" src="img/f.png"></a>
+                  <a class="t" href=""><img class="t" src="img/t.png"></a>
+                </div>
+
+                <div class="frest">
+                  <a class="f" href=""><img class="f" src="img/f.png"></a>
+                  <a class="t" href=""><img class="t" src="img/t.png"></a>
+                </div>
+
+                <!-- <p>© 2014, Al Jazeera. Written and produced by <a href="https://twitter.com/Flip_Stewart">Philippa Stewart</a> and <a href="https://twitter.com/gridinoc">Laurian Gridinoc</a>.</p> -->
+
+                <div class="map"><p><small>Map <span></span></small></p></div>
             </footer>
         </article>
 
@@ -131,14 +156,17 @@
                 <br>
                 <span class="sc">from </span>
                 <br>
-                <%= from %>
-                <% if (to) { %>
+                <%= fromfuzzy %>
+                <% if (tofuzzy) { %>
                 <br>
                 <span class="sc">to </span>
                 <br>
-                <%= to %>
+                <%= tofuzzy %>
                 <% } %>
-                <br><span class="sc">due to</span><br>
+                <br>
+                <% if (description) { %>
+                <span class="sc">due to</span><br>
+                <% } %>
                 </small>
                 <%= description %>
               </span>
