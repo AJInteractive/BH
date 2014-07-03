@@ -54,7 +54,7 @@ header .rest {
 }
 
 .rest nav {
-  display: block;
+  /*display: block;*/
   text-align: center;
   margin: 0;
   padding: 3em 3em 0 3em;
@@ -259,8 +259,12 @@ footer .map {
   bottom: 0;
   text-align: center;
   margin-bottom: 0px;
-  font-size: 12px;
+  font-size: 14px;
   width: 100%;
+}
+
+small {
+    font-size: 10px;
 }
 
 .fside {
@@ -291,7 +295,7 @@ footer .map {
 
 .aj {
   position: absolute;
-  top: 13px;
+  top: 27px;
   left: 30%;
   /*outline: 1px solid yellow;*/
   width: 200px;
@@ -323,25 +327,37 @@ footer .map {
   position: absolute;
   top: 0;
   left: 50%;
-  outline: 1px solid yellow;
+  /*outline: 1px solid yellow;*/
   width: 50%;
+  text-align: center;
 }
 
-
-.frest .f, .aj .t {
-  position: absolute;
-  top: 40px;
+.frest > div {
+  float: left;
+  width: 40%;
 }
 
-.frest .f {
-  left: 16px;
+.frest > div + .frest > div {
+  margin-left: 20px;
 }
 
-.frest .t {
-  left: 50px;
+.frest h4 {
+  font-weight: 800;
+  font-family: 'Merriweather Sans', sans-serif;
+  margin-top: 50px;
+  margin-bottom: 0px;
 }
 
-
+.frest h4 span {
+  font-family: 'Merriweather', serif;
+  font-size: 12;
+  font-weight: 300;
+  display: block;
+  font-size: 16px;
+  border-bottom: 2px solid white;
+  padding-bottom: .5em;
+  margin-bottom: .5em;
+}
 
 
 
@@ -448,7 +464,7 @@ footer .map {
   display: none;
 }
 
-.pace-running .li {
+.pace-running nav {
   display: none;
 }
 
