@@ -48,7 +48,7 @@ var toStyle = {
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // let there be globals
-var map, tiles, shapes, data, Command, sheet;
+var map, tiles, shapes, data, sheet;
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // setup base map
@@ -89,11 +89,6 @@ var setStyleOnEach = function (name, style) {
 
 
 queue()
-    .defer(function (module, callback) {
-        JS.require(module, function(Module) {
-            callback(null, Module);
-        });
-    }, 'JS.Command')
     .defer(function(callback){
       Tabletop.init({
           key: '1fNmHh1m3qKvN-RSueCzcZMHaL-a1I0dPzInxI3Ei-YI',
@@ -113,11 +108,8 @@ queue()
             });
         callback(null, _shapes);
     })
-    .await(function(error, _Command, _sheet, _shapes) {
+    .await(function(error, _sheet, _shapes) {
         if (error) return console.err(error);
-
-        // globals
-        Command = _Command;
 
         sheet = _sheet;
         console.log(sheet);
@@ -225,13 +217,12 @@ function reset() {
   $('#timeline').empty();
 }
 
+
+
 function process() {
-
-
-
-    console.log('Rows ', data.length);
-    console.log('First row', data[0]);
-    console.log('Last row', data[data.length - 1]);
+    // console.log('Rows ', data.length);
+    // console.log('First row', data[0]);
+    // console.log('Last row', data[data.length - 1]);
 
     var $timeline = $('#timeline');
 
@@ -352,28 +343,6 @@ function process() {
                     }
                 }
             }, { offset: '50%' });
-            // .on('click', function() {
-            //     if ($(this).data('lng') && $(this).data('lat')) {
-
-            //         $('.highlight').removeClass('highlight');
-            //         $(this).find('>div').addClass('highlight');
-
-            //         var latlng = L.latLng($(this).data('lat'), $(this).data('lng'));
-
-            //         if (! $(this).data('marker')) {
-            //           var marker = L.marker(latlng, {
-            //               riseOnHover: true
-            //           }).addTo(markerLayers);
-
-            //           marker.bindPopup($(this).data('description'));
-            //           marker.openPopup();
-
-            //           $(this).data('marker', marker);
-            //         } else {
-            //           $(this).data('marker').openPopup();
-            //         }
-            //     }
-            // });
 
         // compute next space
         bottom = top + $event.height();
